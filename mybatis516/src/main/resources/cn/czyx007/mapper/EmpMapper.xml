@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.czyx007.mapper.EmpMapper">
+    <insert id="insertEmp">
+        insert into person_info.emp(ename,esex,estartime) values (#{ename}, #{esex}, #{estartime})
+    </insert>
+    <delete id="deleteEmp">
+        delete
+        from person_info.emp
+        where eid = #{eid};
+    </delete>
+    <select id="getAll" resultType="cn.czyx007.bean.Emp">
+        select * from person_info.emp
+    </select>
+</mapper>

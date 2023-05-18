@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.czyx007.mapper.WifeMapper">
+    <resultMap id="wifeMap" type="cn.czyx007.bean.Wife">
+        <id property="wifeId" column="wife_id"/>
+        <result property="wifeName" column="wife_name"/>
+        <!--映射老公信息 association：用于一对一的关系映射-->
+        <association property="husband" javaType="cn.czyx007.bean.Husband">
+            <id property="husId" column="hus_id"/>
+            <result property="husbandName" column="husband_name"/>
+        </association>
+    </resultMap>
+    <select id="getHusbandWifeInfo" resultMap="wifeMap">
+        SELECT * FROM person_info.husband h INNER JOIN person_info.wife w on h.hus_id=w.hid
+    </select>
+
+    <resultMap id="wifeLazyMap" type="cn.czyx007.bean.Wife">
+        <id property="wifeId" column="wife_id"/>
+        <result property="wifeName" column="wife_name"/>
+        <result column="hid" property="hId"/>
+        <!--映射老公信息 association：用于一.对一的关系映射-->
+        <association property="husband" javaType="cn.czyx007.bean.Husband"
+            select="cn.czyx007.mapper.HusbandMapper.getHusbandById" column="hid" fetchType="lazy">
+            <id property="husId" column="hus_id"/>
+            <result property="husbandName" column="husband_name"/>
+        </association>
+    </resultMap>
+    <select id="getWifeAll" resultMap="wifeLazyMap">
+        select * from person_info.wife
+    </select>
+</mapper>

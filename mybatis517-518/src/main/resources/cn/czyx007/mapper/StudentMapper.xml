@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.czyx007.mapper.StudentMapper">
+
+    <resultMap id="stuMap" type="cn.czyx007.bean.Student">
+        <id column="studentid" property="studentId"/>
+        <result column="studentname" property="studentName"/>
+        <result column="classid" property="classId"/>
+        <collection property="teacherList" ofType="cn.czyx007.bean.Teacher">
+            <id column="teacherid" property="teacherId"/>
+            <result column="teachername" property="teacherName"/>
+        </collection>
+    </resultMap>
+    <select id="getStudent" resultMap="stuMap">
+        select stu.*,t.*
+        from person_info.student stu
+        inner join person_info.class c
+        on stu.classid = c.classid
+        inner join person_info.teacher t
+        on t.teacherid = c.teacherid
+    </select>
+</mapper>

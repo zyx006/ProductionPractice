@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.czyx007.mapper.UsersMapper">
+    <resultMap id="usersMap" type="cn.czyx007.bean.Users">
+        <collection property="ordersList" ofType="cn.czyx007.bean.Orders"/>
+    </resultMap>
+    <select id="getUsersAndOrders" resultMap="usersMap">
+        select *
+        from person_info.users u
+        inner join person_info.orders o
+        on u.id = o.userId
+    </select>
+</mapper>
