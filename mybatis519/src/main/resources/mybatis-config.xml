@@ -20,6 +20,7 @@
         <!--将下划线映射为驼峰-->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
         <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="cacheEnabled" value="true"/>
     </settings>
 
     <typeAliases>
@@ -28,6 +29,7 @@
 
     <plugins>
         <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!-- 启用合理化，防止第一页再点击上一页，最后一页再点击下一页 -->
             <property name="reasonable" value="true"/>
         </plugin>
     </plugins>

@@ -5,4 +5,7 @@
 
 <mapper namespace="cn.czyx007.mapper.BrandMapper">
 
+<!--    开启二级缓存,注解与此处二选一 -->
+<!--    <cache/>-->
+
 </mapper>

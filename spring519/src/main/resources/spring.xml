@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="dog" class="cn.czyx007.bean.Dog">
+<!--        依赖注入，对 对象属性赋值 -->
+        <property name="name" value="xxx"/>
+    </bean>
+
+</beans>
