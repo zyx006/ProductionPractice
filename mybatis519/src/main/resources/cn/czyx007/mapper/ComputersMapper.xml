@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.czyx007.mapper.ComputersMapper">
+
+    <update id="updateByConditionSet">
+        update person_info.computers
+        <set>
+            <if test="price!=null">
+                price = #{price},
+            </if>
+            <if test="xianka!=null">
+                xianka = #{xianka}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+    <update id="updateByConditionTrim">
+        update person_info.computers
+        <trim prefix="set" suffixOverrides=",">
+            <if test="price!=null">
+                price = #{price},
+            </if>
+            <if test="xianka!=null">
+                xianka = #{xianka}
+            </if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <sql id="computerSql">
+        id,brand,price,cpu,xianka
+    </sql>
+    <select id="getComputers" resultType="cn.czyx007.bean.Computers">
+        select <include refid="computerSql"/>from person_info.computers
+    </select>
+<!--    <select id="queryByConditionIf" resultType="cn.czyx007.bean.Computers">-->
+<!--        select * from person_info.computers-->
+<!--        <where>-->
+<!--            <if test="brand!=null and brand != ''">-->
+<!--                and brand like concat('%',#{brand},'%')-->
+<!--            </if>-->
+<!--            <if test="startPrice!=null">-->
+<!--                and price &gt;= #{startPrice}-->
+<!--            </if>-->
+<!--            <if test="endPrice!=null">-->
+<!--                and price &lt;= #{endPrice}-->
+<!--            </if>-->
+<!--            <if test="runmem!=null">-->
+<!--                and runmem = #{runmem}-->
+<!--            </if>-->
+<!--            <if test="cpu!=null and cpu!=''">-->
+<!--                and cpu = #{cpu}-->
+<!--            </if>-->
+<!--            <if test="xianka!=null">-->
+<!--                and xianka = #{xianka}-->
+<!--            </if>-->
+<!--        </where>-->
+<!--    </select>-->
+    <select id="queryByConditionChoose" resultType="cn.czyx007.bean.Computers">
+        SELECT * FROM person_info.computers
+        <where>
+            <choose>
+                <when test="brand!=null and brand!=''">
+                    and brand like concat('%',#{brand},'%')
+                </when>
+                <when test="startPrice!=null">
+                    and price &gt;= #{startPrice}
+                </when>
+                <when test="endPrice!=null">
+                    and price &lt;= #{endPrice}
+                </when>
+            </choose>
+        </where>
+        order by id desc
+    </select>
+    <select id="queryByConditionTrim" resultType="cn.czyx007.bean.Computers">
+        select * from person_info.computers
+        <trim prefix="where" prefixOverrides="and">
+            <if test="brand!=null and brand!=''">
+                and brand like concat('%',#{brand},'%')
+            </if>
+            <if test="startPrice!=null">
+                and price &gt;= #{startPrice}
+            </if>
+            <if test="endPrice!=null">
+                and price &lt;= #{endPrice}
+            </if>
+        </trim>
+    </select>
+    <select id="queryByForEach" resultType="cn.czyx007.bean.Computers">
+        select *
+        from person_info.computers
+        where id in
+        <foreach collection="array" open="(" separator="," close=")" item="id">
+            #{id}
+        </foreach>
+    </select>
+</mapper>

@@ -11,6 +11,7 @@
         <module name="demo516" />
         <module name="demo515" />
         <module name="mybatis517-518" />
+        <module name="mybatis519" />
       </profile>
     </annotationProcessing>
   </component>
