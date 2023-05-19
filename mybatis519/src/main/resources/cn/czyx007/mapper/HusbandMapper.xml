@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.czyx007.mapper.HusbandMapper">
+    <resultMap id="hudMap" type="cn.czyx007.bean.Husband">
+        <id property="husId" column="hud_id"/>
+        <result property="husbandName" column="hudband_name"/>
+    </resultMap>
+    <select id="getHusbandById" resultMap="hudMap">
+        select * from person_info.husband where hus_id = #{hid}
+    </select>
+</mapper>
