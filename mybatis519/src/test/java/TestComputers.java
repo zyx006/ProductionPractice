@@ -4,6 +4,7 @@ import cn.czyx007.mapper.BrandMapper;
 import cn.czyx007.mapper.ComputersMapper;
 import cn.czyx007.utils.SqlSessionUtil;
 import com.github.pagehelper.PageInfo;
+import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
 import java.util.List;
@@ -39,5 +40,24 @@ public class TestComputers {
         computers.setBrand("联想");
         computers.setStartPrice(5000F);
         mapper.queryByConditionIf(computers).forEach(System.out::println);
+    }
+    //缓存
+    @Test
+    public void test03(){
+        SqlSession sqlSession = SqlSessionUtil.getSqlSession();
+        BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
+        mapper.getBrandAll().forEach(System.out::println);
+
+        //更新操作会导致缓存失效
+//        Brand brand = new Brand();
+//        brand.setId(1);
+//        brand.setBrandName("华为");
+//        System.out.println(mapper.updateBrandById(brand));
+        //也可以手动清除缓存
+//        sqlSession.clearCache();
+
+        System.out.println("=============");
+        BrandMapper mapper1 = sqlSession.getMapper(BrandMapper.class);
+        mapper1.getBrandAll().forEach(System.out::println);
     }
 }
