@@ -17,7 +17,8 @@ public class UserServiceImpl implements UserService {
     //自动注入
     @Autowired
     //指定使用哪一个dao
-    @Qualifier("mysqlUserDao")
+    @Qualifier("mysqlUserDaoImpl")
+//    @Resource
     UserDao userDao;
 
     @Override

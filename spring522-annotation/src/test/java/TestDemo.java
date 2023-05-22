@@ -16,4 +16,11 @@ public class TestDemo {
         User user = userService.findUserById("1");
         System.out.println("user = " + user);
     }
+
+    @Test
+    public void test2(){
+        ClassPathXmlApplicationContext app = new ClassPathXmlApplicationContext("spring.xml");
+        User user = app.getBean("user", User.class);
+        System.out.println(user);
+    }
 }
