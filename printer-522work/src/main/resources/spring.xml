@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 配置墨盒和纸张的bean -->
+    <bean id="colorInkBox" class="cn.czyx007.dao.impl.ColorInkBox" />
+    <bean id="greyInkBox" class="cn.czyx007.dao.impl.GreyInkBox" />
+    <bean id="a4Paper" class="cn.czyx007.dao.impl.A4Paper" />
+    <bean id="b5Paper" class="cn.czyx007.dao.impl.B5Paper" />
+
+    <!-- 配置打印机的bean -->
+    <bean id="printer" class="cn.czyx007.bean.Printer">
+        <!-- 通过依赖注入组装打印机 -->
+        <constructor-arg ref="colorInkBox" />
+        <constructor-arg ref="a4Paper" />
+    </bean>
+
+</beans>
