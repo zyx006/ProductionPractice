@@ -8,11 +8,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="spring519" />
+        <module name="mybatis519" />
+        <module name="spring522-annotation" />
+        <module name="spring522" />
         <module name="mybatis516" />
         <module name="demo516" />
         <module name="demo515" />
         <module name="mybatis517-518" />
-        <module name="mybatis519" />
       </profile>
     </annotationProcessing>
   </component>

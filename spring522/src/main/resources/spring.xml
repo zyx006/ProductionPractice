@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--
+    scope=prototype 设置多例模式
+    默认单例
+    lazy-init="true" 懒加载
+    -->
+    <bean id="dog" class="cn.czyx007.bean.Dog" scope="prototype" lazy-init="true">
+        <!--        依赖注入，对 对象属性赋值 -->
+        <!-- 需要提供setter方法，因为该标签使用setter注入方式  -->
+        <property name="name" value="xxx"/>
+    </bean>
+
+<!--    把dao的实现交给spring管理-->
+    <bean id="mysqlUserDao" class="cn.czyx007.dao.impl.MysqlUserDaoImpl"/>
+    <bean id="oracleUserDao" class="cn.czyx007.dao.impl.OracleUserDaoImpl"/>
+
+<!--    把service的实现交给spring管理-->
+    <bean id="mysqlUserService" class="cn.czyx007.service.impl.UserServiceImpl">
+        <!--注入dao对象-->
+        <property name="userDao" ref="mysqlUserDao"/>
+    </bean>
+    <bean id="oracleUserService" class="cn.czyx007.service.impl.OracleUserServiceImpl">
+        <property name="userDao" ref="oracleUserDao"/>
+    </bean>
+
+    <!--通过构造器依赖注入-->
+    <bean id="user" class="cn.czyx007.bean.User">
+        <constructor-arg index="0" type="java.lang.String" name="id" value="1001"/>
+        <constructor-arg index="1" type="java.lang.String" name="userName" value="柳岩"/>
+        <constructor-arg index="2" type="java.lang.String" name="address" value="北京"/>
+        <constructor-arg index="3" type="java.lang.Integer" name="age" value="18"/>
+    </bean>
+</beans>
