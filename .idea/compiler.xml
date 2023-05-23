@@ -11,6 +11,7 @@
         <module name="spring519" />
         <module name="spring-mybatis01-522-523" />
         <module name="mybatis519" />
+        <module name="springmvc-01-523" />
         <module name="spring522-annotation" />
         <module name="spring522" />
         <module name="mybatis516" />
