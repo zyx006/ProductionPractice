@@ -23,7 +23,7 @@ public class MyController implements Controller {
         //1.封装数据
         modelAndView.addObject("userName", "abc");
         //2.封装视图
-        modelAndView.setViewName("WEB-INF/jsp/index.jsp");
+        modelAndView.setViewName("index");
         return modelAndView;
     }
 }

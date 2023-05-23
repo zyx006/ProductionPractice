@@ -11,9 +11,14 @@
 			http://www.springframework.org/schema/context/spring-context-4.2.xsd ">
 
     <!--此处id指要配置拦截的url路径-->
-<!--    <bean id="/myController" class="cn.czyx007.mvc.controller.MyController"/>-->
+    <bean id="/myController" class="cn.czyx007.mvc.controller.MyController"/>
 
     <context:component-scan base-package="cn.czyx007.mvc.*"/>
     <mvc:annotation-driven/>
+
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
     
 </beans>
