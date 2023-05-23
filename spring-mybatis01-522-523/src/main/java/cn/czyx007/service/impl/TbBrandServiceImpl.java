@@ -5,6 +5,7 @@ import cn.czyx007.dao.TbBrandDao;
 import cn.czyx007.service.TbBrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * (TbBrand)表服务实现类
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
  * @since 2023-05-22 15:33:50
  */
 @Service
+@Transactional
 public class TbBrandServiceImpl implements TbBrandService {
     @Autowired
     TbBrandDao tbBrandDao;
@@ -34,9 +36,11 @@ public class TbBrandServiceImpl implements TbBrandService {
      * @param tbBrand 实例对象
      * @return 实例对象
      */
+
     @Override
     public TbBrand insert(TbBrand tbBrand) {
         this.tbBrandDao.insert(tbBrand);
+        int i = 1/0;
         return tbBrand;
     }
 

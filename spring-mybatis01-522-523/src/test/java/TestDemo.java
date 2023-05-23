@@ -21,4 +21,12 @@ public class TestDemo {
         TbBrand tbBrand = brandService.queryById(5);
         System.out.println("tbBrand = " + tbBrand);
     }
+
+    @Test
+    public void test2(){
+        TbBrand brand = new TbBrand();
+        brand.setId(123);
+        brand.setBrandName("123");
+        brandService.insert(brand);
+    }
 }
