@@ -9,16 +9,23 @@
         <outputRelativeToContentRoot value="true" />
         <module name="printer-522work" />
         <module name="spring519" />
-        <module name="spring-mybatis01-522-523" />
-        <module name="mybatis519" />
         <module name="springmvc-01-523" />
+        <module name="demo516" />
+        <module name="demo515" />
+        <module name="spring-mybatis01-522-523" />
+        <module name="springboot-524" />
+        <module name="mybatis519" />
+        <module name="springmvc-02-524" />
         <module name="spring522-annotation" />
         <module name="spring522" />
         <module name="mybatis516" />
-        <module name="demo516" />
-        <module name="demo515" />
         <module name="mybatis517-518" />
       </profile>
     </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="springboot-524" options="-parameters" />
+    </option>
   </component>
 </project>

@@ -4,6 +4,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/demo515" />
     <file type="web" url="file://$PROJECT_DIR$/springmvc-01-523" />
+    <file type="web" url="file://$PROJECT_DIR$/springmvc-02-524" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -21,6 +22,8 @@
         <option value="$PROJECT_DIR$/printer-522work/pom.xml" />
         <option value="$PROJECT_DIR$/spring-mybatis01-522-523/pom.xml" />
         <option value="$PROJECT_DIR$/springmvc-01-523/pom.xml" />
+        <option value="$PROJECT_DIR$/springmvc-02-524/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-524/pom.xml" />
       </list>
     </option>
   </component>
