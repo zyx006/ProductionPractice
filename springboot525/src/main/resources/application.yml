@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/person_info?serverTimezone=Asia/Shanghai
+    username: root
+    password: zyx007
+
+mybatis:
+  type-aliases-package: cn.czyx007.bean
+  mapper-locations: classpath:mappers/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+person:
+  username: abc
