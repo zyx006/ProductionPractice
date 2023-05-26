@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/person_info?serverTimezone=Asia/Shanghai
+    username: root
+    password: zyx007
+    druid:
+      #初始化连接数
+      initial-size: 1
+      #最小空闲连接
+      min-idle: 1
+      #最大活动连接
+      max-active: 20
+      #获取连接时测试是否可用
+      test-on-borrow: true
+      #监控页面启动
+      filter:
+        wall:
+          config:
+            start-transaction-allow: true
+#  web:
+#    resources:
+#      #修改静态资源目录
+#      static-locations: classpath:/liuyan/
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
